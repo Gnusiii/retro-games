@@ -69,7 +69,7 @@ let isGameOn = false;
 //////////////////////////////////////////
 
 function setup() {
-  cnv = createCanvas(400, 400);
+  cnv = createCanvas(500, 423);
   cnv.parent('my-container');
 
   snake = new Snake();
