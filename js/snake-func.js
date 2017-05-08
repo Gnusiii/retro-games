@@ -24,6 +24,9 @@ function Snake() {
       if (dis < 1) {
         this.total = 0;
         this.tail = [];
+
+        if ('collisionHandler' in this)
+          this.collisionHandler();
       }
     }
   }
@@ -46,7 +49,7 @@ function Snake() {
     this.y = constrain(this.y, 0, height-scl);
   }
   this.show = () => {
-    fill(100, 255, 150);
+    fill(205, 220, 57);
     for (let i = 0; i < this.total; i++) {
       rect(this.tail[i].x, this.tail[i].y, 15, 15);
     }
@@ -55,39 +58,38 @@ function Snake() {
 
 }
 
-
-
 let cnv;
 let snake;
 let scl = 15;
-let food;
-let snakeBtn;
+let isGameOn = false;
 
-// function centerCanvas() {
-//   let x = (windowWidth - width) / 2;
-//   let y = (windowHeight - height) / 2;
-//   cnv.position(x, y);
-// }
-
-// function windowResized() {
-//   centerCanvas();
-// }
 
 //////////////////////////////////////////
 //SETUP
 //////////////////////////////////////////
 
 function setup() {
-  cnv = createCanvas(500, 423);
-  cnv.id('canvas-snuba');
-  cnv.parent('my-container');
-  // cnv.style("margin-left", "50%");
-  // centerCanvas();
+  cnv = createCanvas(400, 400);
+  cnv.parent('myContainer');
+
   snake = new Snake();
+  snake.collisionHandler = () => {
+    isGameOn = false;
+    document.getElementById('startGame').style.display = 'block';
+    snake.x = 0;
+    snake.y = 0;
+  }
   frameRate(10);
   foodLocation();
 
+  // Event listeners
+  let btn = document.getElementById("startGame").addEventListener("click", startGame);
 }
+
+  function startGame() {
+    isGameOn = true;
+    document.getElementById('startGame').style.display = 'none';
+  }
 
 function foodLocation() {
   let cols = floor(width/scl);
@@ -100,17 +102,26 @@ function foodLocation() {
 //DRAW
 //////////////////////////////////////////
 
-function draw() {
-  background(100, 200, 100);
 
+// setTimeout(function(){
+//   keepDrawing = true;
+// }, 2000)
+function draw() {
+
+  if ( !isGameOn ) {
+    return;
+  }
+
+  background(102, 187, 106);
   if (snake.eat(food)) {
     foodLocation();
   }
+
   snake.collision();
   snake.update();
   snake.show();
 
-  fill(150, 225, 150);
+  fill(205, 220, 57);
   rect(food.x, food.y, 15, 15);
 }
 
