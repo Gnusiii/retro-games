@@ -70,7 +70,7 @@ let isGameOn = false;
 
 function setup() {
   cnv = createCanvas(400, 400);
-  cnv.parent('myContainer');
+  cnv.parent('my-container');
 
   snake = new Snake();
   snake.collisionHandler = () => {
