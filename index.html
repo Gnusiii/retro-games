@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>lokaverkefni</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--  CSS Files -->
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/foundation.css">
+	<link rel="stylesheet" type="text/css" href="css/logo.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- Javascript files -->
+	<script src="js/three.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollify.js"></script>
+	<script type="text/javascript" src="js/foundation.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript" src="js/scroll.js"></script>
+	<script type="text/javascript" src="js/p5.min.js"></script>
+		 <script type="text/javascript" src="js/p5.dom.min.js"></script>
+	<!-- <script type="text/javascript" src="js/prevent-scroll.js"></script> -->
+	<script src="https://use.fontawesome.com/390ded57b1.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+	
+	
+</head>
+	<body>
+
+	<script type="text/javascript">
+				const keys = {};
+window.addEventListener("keydown",
+    (e)=>{
+        keys[e.keyCode] = true;
+        switch(e.keyCode){
+            case 37: case 39: case 38:  case 40: // Arrow keys
+            case 32: e.preventDefault(); break; // Space
+            default: break; // do not block other keys
+        }
+    },
+false);
+window.addEventListener('keyup',
+    function(e){
+        keys[e.keyCode] = false;
+    },
+false);
+	</script>
+
+	
+		<div class="row">
+
+				<div class="logo">
+					<a href="#home">
+						<svg width="98px" height="47px" viewBox="0 0 98 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+						    <desc>Created with Sketch.</desc>
+						    <defs></defs>
+						    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-weight="normal" font-family="BungeeShade-Regular, Bungee Shade" letter-spacing="1.41620635e-08" font-size="24">
+						        <g id="Desktop-HD" transform="translate(-161.000000, -181.000000)" stroke="#FFFFFF" fill="#FFFFFF">
+						            <text id="Retro-Games">
+						                <tspan x="161.664" y="200">Retro </tspan>
+						                <tspan x="160.908" y="224">Games</tspan>
+						            </text>
+						        </g>
+						    </g>
+						</svg>
+					</a>
+				</div>
+					<div class="row">
+						<div class="navbar">
+						<ul>
+							<li><a href="#home">Home</a></li>
+						    <li><a href="#snake">Snake</a></li>
+						    <li><a href="#break-out">Tetris</a></li>
+						    <li><a href="#space-invaders">Space Invader</a></li>
+						</ul>
+					</div>
+					</div>
+				<div class="info">
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+				</div>
+
+		</div>
+		
+		<section class="home panel" id="home">
+		<a name="home"></a>
+			<div class="row">
+				<div class="small-12">
+					<div class="about">
+						<h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consectetur placerat dui quis tristique. Integer vel accumsan velit. Integer porta placerat orci ultrices semper. Proin et ante id eros tristique volutpat. Maecenas sit amet odio ullamcorper, ultrices tellus ac, fermentum est. Duis in dignissim lacus. Curabitur eros nulla, placerat at aliquet quis, malesuada sed ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris gravida lacus ullamcorper, laoreet felis a, varius eros. Nam facilisis blandit leo, sed accumsan augue.</h1>
+					</div>
+				</div>
+			</div>
+			<div class="scroll-downs">
+			  <div class="mousey">
+			    <div class="scroller"></div>
+			  </div>
+			</div>
+		</section>
+		<div class="partition">
+			<div class="grey"></div>
+			<div class="purple"></div>
+		</div>
+		<section class="snake panel" id="snake">
+		<a name="snake"></a>
+			<div class="row">
+				<div class="small-12 large-12">
+					<div id="my-container" class="playbox">
+						<div class="playbutton-name">
+							<div class="row">
+								<div class="small-12 playbutton">
+								
+							
+									<!-- 	<script type="text/javascript" src="js/snake.js"></script> -->
+		 								<script type="text/javascript" src="js/snake-func.js"></script>
+							
+							
+		 								<div id=""></div>
+									<!-- <svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+									    <!-- <desc>Created with Sketch.</desc>
+									    <defs></defs>
+									    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									        <g id="space-invaders-" transform="translate(-663.000000, -452.000000)" fill-rule="nonzero" fill="#FFFFFF">
+									            <g id="ic_play_circle_outline_black_24px" transform="translate(651.000000, 440.000000)">
+									                <path d="M60,99 L96,72 L60,45 L60,99 Z M72,12 C38.88,12 12,38.88 12,72 C12,105.12 38.88,132 72,132 C105.12,132 132,105.12 132,72 C132,38.88 105.12,12 72,12 Z M72,124 C43.335,124 20,100.665 20,72 C20,43.335 43.335,20 72,20 C100.665,20 124,43.335 124,72 C124,100.665 100.665,124 72,124 Z" id="Shape"></path> --> 
+									            </g>
+									        </g>
+									    </g>
+									</svg>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12">
+									<p class="game-name">
+										Snake
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="scroll-downs">
+			  		<div class="mousey">
+			    		<div class="scroller"></div>
+			  		</div>
+				</div>
+		</section>
+		<div class="partition">
+			<div class="grey">
+				
+			</div>
+			<div class="purple">
+				
+			</div>
+		</div>
+		<section class="break-out panel">
+		<a name="break-out"></a>
+			<div class="row">
+				<div class="small-12">
+					<div class="playbox">
+						<div class="playbutton-name">
+							<div class="row">
+								<div class="small-12 playbutton">
+									
+									<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+									    <desc>Created with Sketch.</desc>
+									    <defs></defs>
+									    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									        <g id="space-invaders-" transform="translate(-663.000000, -452.000000)" fill-rule="nonzero" fill="#FFFFFF">
+									            <g id="ic_play_circle_outline_black_24px" transform="translate(651.000000, 440.000000)">
+									                <path d="M60,99 L96,72 L60,45 L60,99 Z M72,12 C38.88,12 12,38.88 12,72 C12,105.12 38.88,132 72,132 C105.12,132 132,105.12 132,72 C132,38.88 105.12,12 72,12 Z M72,124 C43.335,124 20,100.665 20,72 C20,43.335 43.335,20 72,20 C100.665,20 124,43.335 124,72 C124,100.665 100.665,124 72,124 Z" id="Shape"></path>
+									            </g>
+									        </g>
+									    </g>
+									</svg>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12">
+									<p class="game-name">
+										Tetris
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="scroll-downs">
+			  <div class="mousey">
+			    <div class="scroller"></div>
+			  </div>
+			</div>
+		</section>
+		<div class="partition">
+			<div class="grey">
+				
+			</div>
+			<div class="purple">
+				
+			</div>
+		</div>
+		<section class="space-invaders panel">
+		<a name="space-invaders"></a>
+			<div class="row">
+				<div class="small-12">
+					<div class="playbox">
+						<div class="playbutton-name">
+							<div class="row">
+								<div class="small-12 playbutton">
+									<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+									    <desc>Created with Sketch.</desc>
+									    <defs></defs>
+									    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									        <g id="space-invaders-" transform="translate(-663.000000, -452.000000)" fill-rule="nonzero" fill="#FFFFFF">
+									            <g id="ic_play_circle_outline_black_24px" transform="translate(651.000000, 440.000000)">
+									                <path d="M60,99 L96,72 L60,45 L60,99 Z M72,12 C38.88,12 12,38.88 12,72 C12,105.12 38.88,132 72,132 C105.12,132 132,105.12 132,72 C132,38.88 105.12,12 72,12 Z M72,124 C43.335,124 20,100.665 20,72 C20,43.335 43.335,20 72,20 C100.665,20 124,43.335 124,72 C124,100.665 100.665,124 72,124 Z" id="Shape"></path>
+									            </g>
+									        </g>
+									    </g>
+									</svg>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12">
+									<p class="game-name">
+										Space Invaders
+									</p>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+			<div class="scroll-downs">
+			  <div class="mousey">
+			    <div class="scroller"></div>
+			  </div>
+			</div>
+		</section>
+		<footer class="footer">
+			<div class="footermix">
+				<div class="row align-center ">
+				<div class="small-12 column">
+					<div class="row align-center">
+						<div class="small-6 mitt-a-milli">
+							<div class="circle-pic pic-disa"></div>
+						<p class="name">Hjördís E. Guðjónsd.</p>
+						<p> Hönnuður og Framendaforritari</p>
+						</div>
+						<div class="small-6 mitt-a-milli">
+							<div class="circle-pic pic-gnusi"></div>
+						<p class="name">Magnús Aron Haahr</p>
+						<p> Leikjahönnuður og Leikjaforritari</p>
+						</div>
+					</div>	
+				</div>
+			</div>
+			</div>
+		</footer>
+	
+		  <script type="text/javascript" src="js/background.js"></script>
+
+
+	</body>
+</html>

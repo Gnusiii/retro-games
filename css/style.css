@@ -1,0 +1,290 @@
+h1, h2, h3, h4, h5, h6, p {
+	font-family: "Helvetica";
+	color: #fff;
+}
+
+html, body {
+	height: 100%;
+}
+
+*{
+	margin: 0;
+}
+/*.topnav{
+	width: 100vw;
+	height: 50px;
+	margin-top: 50px;
+	position: fixed;
+	z-index: 9;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+}*/
+
+
+#canvas-snuba {
+	z-index: 1;
+
+
+
+}
+
+#snakeBtn-snuba {
+	z-index: 1;
+}
+
+.logo{
+	position: fixed;
+	left: 80px;
+	height: 50px;
+	margin-top: 50px;
+	z-index: 9;
+}
+.navbar{
+height: 50px;
+	margin-top: 50px;
+	z-index: 9;
+	position: fixed;
+	left: 50%;
+    transform: translate(-50%, 0%);
+}
+.info{
+	position: fixed;
+	right: 80px;
+	font-size: 32px;
+	color: #fff;
+	height: 50px;
+	margin-top: 50px;
+	z-index: 9;
+}
+
+li{
+	display: inline;
+}
+.home, .snake, .break-out, .space-invaders{
+	width:100vw;
+	height:100vh;
+	position: relative;
+}
+.home{
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.snake{
+	background-color: rgba(68, 137, 26, 0.5);
+}
+.break-out{
+	background-color: rgba(190, 38, 51, 0.5);
+}
+.space-invaders{
+	background-color: rgba(0, 87, 132, 0.5);
+}
+
+.home .about {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: scroll;
+}
+
+.home .about h1{
+	height: 500px;
+	width: 500px;
+}
+.snake .playbox {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.break-out .playbox {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.space-invaders .playbox {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+ul li a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 24px;
+	padding: 25px;
+}
+ul li a:hover{
+	text-decoration: underline;
+	color: #fff;
+}
+.partition{
+	width: 100vw;
+	height: 100vw;
+}
+
+.purple{
+	background-color: #2F484E;
+	height: 50%;
+	z-index: 10;
+}
+.grey{
+	background-color: #9D9D9D;;
+	height: 50%;
+	z-index: 10;
+}
+.playbox{
+	position: relative;
+	
+	/*background: rgba(255,255,255,0.60);*/
+	border: 6px solid #fff;
+	width: 512px;
+	height: 435px;
+}
+
+.playbox .playbutton-name{
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+.playbutton{
+	font-size: 144px;
+	text-align: center;
+	animation: playme 3s ease-in-out infinite;
+}
+
+@keyframes playme{
+	0%{
+		opacity: 1;
+	}
+	50%{
+		opacity: 0.5;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+.playbutton:hover{
+	opacity: 1;
+}
+.game-name{
+	font-family: 'Press Start 2P', cursive;
+	font-size: 28px;
+	text-align: center;
+}
+.scroll-downs {
+  position: absolute;
+  right: 0;
+  bottom: 15px;
+  left: 0;
+  margin: auto;
+  
+  width :34px;
+  height: 55px;
+}
+.mousey {
+  width: 3px;
+  padding: 10px 15px;
+  height: 55px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  opacity: 0.75;
+  margin: auto;
+}
+.scroller {
+  width: 3px;
+  height: 10px;
+  border-radius: 25%;
+  background-color: #fff;
+  animation-name: scroll;
+  animation-duration: 2.2s;
+  animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+  animation-iteration-count: infinite;
+}
+
+@keyframes scroll {
+  0% { opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0;}
+}
+canvas{
+	position: fixed;
+	top:0px;
+	z-index: -1;
+	background-color: #1B2632;
+}
+
+footer{
+	height: 100vh;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.footermix{
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.boxframe{
+	border: 2px solid #fff;
+	height: 200px;
+	position: relative;
+	height:370px; 
+	width:785px;
+	/*background: rgba(255,255,255,0.60);*/
+	border: 6px solid #fff;
+
+}
+.mitt-a-milli{
+	padding: 40px;
+}
+.mitt-a-milli{
+	text-align: center;
+}
+
+.name{
+	padding-top: 15px;
+	font-weight: 700;
+	text-align: center;
+}
+.circle-pic{
+    height: 250px;
+    width: 250px;
+  	border-radius: 50%;
+  	align-self: center;
+  	overflow: hidden; 	
+  	background-size: cover;
+  	filter: grayscale(1);
+}
+.pic-disa{
+	background-image: url(../assets/disa02.png);
+ 
+}
+.pic-disa:hover{
+	background-image: url(../assets/disa01.png);
+	
+}
+.pic-gnusi{
+	background-image: url(../assets/gnusi01.png);
+}
+.pic-gnusi:hover{
+	background-image: url(../assets/gnusi02.png);
+	
+}
+
+@media (max-width: 1300px) and (min-width: 220px){
+
+	.game-name{
+	font-size: 24px;
+}
+}
