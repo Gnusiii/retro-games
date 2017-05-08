@@ -156,6 +156,10 @@ ul li a:hover{
     transform: translate(-50%, -50%);
     color: #fff;
 }
+.plabutton-name:hover{
+	cursor: hand;
+	cursor: pointer;
+}
 .playbutton{
 	font-size: 144px;
 	text-align: center;
