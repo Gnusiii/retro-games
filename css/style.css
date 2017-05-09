@@ -59,41 +59,6 @@ li{
 .space-invaders{
 	background-color: rgba(0, 87, 132, 0.5);
 }
-
-/*.home .about {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: scroll;
-}*/
-
-/*.home .about h1{
-	height: 500px;
-	width: 500px;
-}*/
-/*.snake .playbox {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.break-out .playbox {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.space-invaders .playbox {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}*/
 .panel{
 	display: flex;
 	align-items: center;
@@ -213,14 +178,17 @@ ul li a:hover{
   10% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(15px); opacity: 0;}
 }
+
+/*background canvas*/
 body > canvas{
 	position: fixed;
 	top:0px;
 	z-index: -1;
 	background-color: #1B2632;
 }
+/*game canvas*/
 section canvas {
-	background-color: #1B2632;
+
 } 
 footer{
 	height: 100vh;
