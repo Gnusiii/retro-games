@@ -10,23 +10,9 @@ html, body {
 *{
 	margin: 0;
 }
-/*.topnav{
-	width: 100vw;
-	height: 50px;
-	margin-top: 50px;
-	position: fixed;
-	z-index: 9;
-	left: 50%;
-	transform: translate(-50%, -50%);
-
-}*/
-
 
 #my-container {
 	z-index: 1;
-
-
-
 }
 
 #snakeBtn-snuba {
@@ -61,11 +47,6 @@ height: 50px;
 li{
 	display: inline;
 }
-.home, .snake, .break-out, .space-invaders{
-	width:100vw;
-	height:100vh;
-	position: relative;
-}
 .home{
 	background-color: rgba(0, 0, 0, 0.5);
 }
@@ -88,10 +69,10 @@ li{
     overflow: scroll;
 }*/
 
-.home .about h1{
+/*.home .about h1{
 	height: 500px;
 	width: 500px;
-}
+}*/
 /*.snake .playbox {
     margin: 0;
     position: absolute;
@@ -117,6 +98,9 @@ li{
 	display: flex;
 	align-items: center;
 	justify-content: middle;
+	width:100vw;
+	height:100vh;
+	
 }
 
 ul li a{
@@ -132,27 +116,29 @@ ul li a:hover{
 .partition{
 	width: 100vw;
 	height: 100vw;
+	z-index: 10;
 }
 
 .purple{
 	background-color: #2F484E;
 	height: 50%;
-	z-index: 10;
+	
 }
 .grey{
 	background-color: #9D9D9D;;
 	height: 50%;
-	z-index: 10;
 }
 .playbox{
-	
-	
-	/*background: rgba(255,255,255,0.60);*/
+	position: relative;
 	border: 6px solid #fff;
 	width: 512px;
 	height: 435px;
+	color: #fff;
 }
-
+ .panel #my-container{
+	align-self: center;
+	justify-content: middle;
+}
 .playbox .playbutton-name{
 	margin: 0;
     position: absolute;
@@ -184,6 +170,8 @@ ul li a:hover{
 }
 .playbutton:hover{
 	opacity: 1;
+	cursor: hand;
+	
 }
 .game-name{
 	font-family: 'Press Start 2P', cursive;
@@ -225,13 +213,15 @@ ul li a:hover{
   10% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(15px); opacity: 0;}
 }
-canvas{
+body > canvas{
 	position: fixed;
 	top:0px;
 	z-index: -1;
 	background-color: #1B2632;
 }
-
+section canvas {
+	background-color: #1B2632;
+} 
 footer{
 	height: 100vh;
 	position: relative;
@@ -256,8 +246,7 @@ footer{
 }
 .mitt-a-milli{
 	padding: 40px;
-}
-.mitt-a-milli{
+
 	text-align: center;
 }
 
@@ -277,22 +266,18 @@ footer{
 }
 .pic-disa{
 	background-image: url(../assets/disa.png);
- 	top: 0px;
- 	left: 0px
+ 	background-position: 0px -20px;
 }
 .pic-disa:hover{
-	left: 0px;
-	bottom: 2450px;
+	background-position: 0px 2450px;
 	
 }
 .pic-gnusi{
 	background-image: url(../assets/gnusi.png);
-	top: 0px;
- 	left: 0px
+	background-position: 0px -20px;
 }
 .pic-gnusi:hover{
-	left:0px;
-	top: 2450px;
+	background-position: 0px 2450px;
 	
 }
 
