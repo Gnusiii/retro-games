@@ -24,8 +24,7 @@ height: 50px;
 	margin-top: 50px;
 	z-index: 9;
 	position: fixed;
-	left: 50%;
-    transform: translate(-50%, 0%);
+	align-self: center;
 }
 .info{
 	position: fixed;
