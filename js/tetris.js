@@ -4,7 +4,7 @@ let BlockSize;
 let startGame = false;
 
 function setup() {
-	let cnv = createCanvas(500, 500);
+	let cnv = createCanvas(500, 423);
 	cnv.parent("tetris");
 	Game = new game();
 	frameRate(10);
