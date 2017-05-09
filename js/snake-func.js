@@ -1,141 +1,243 @@
-function Snake() {
-  this.x = 0;
-  this.y = 0;
-  this.xspeed = 1;
-  this.yspeed = 0;
-  this.total = 0;
-  this.tail = [];
 
-  this.eat = (pos) => {
-    let dis = dist(this.x, this.y, pos.x, pos.y);
-    if (dis < 1) {
-      this.total ++;
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
-  this.collision = () => {
-    for (let i = 0; i < this.tail.length; i++) {
-      let pos = this.tail[i];
-      let dis = dist(this.x, this.y, pos.x, pos.y);
-      if (dis < 1) {
-        this.total = 0;
-        this.tail = [];
-
-        if ('collisionHandler' in this)
-          this.collisionHandler();
-      }
-    }
-  }
-
-  this.dir = (x, y) => {
-    this.xspeed = x;
-    this.yspeed = y;
-  }
-
-  this.update = () => {
-    for (let i = 0; i < this.tail.length-1; i++) {
-      this.tail[i] = this.tail[i+1];
-    }
-    this.tail[this. total-1] = createVector(this.x, this.y);
-
-    this.x = this.x + this.xspeed * scl;
-    this.y = this.y + this.yspeed * scl;
-
-    this.x = constrain(this.x, 0, width-scl);
-    this.y = constrain(this.y, 0, height-scl);
-  }
-  this.show = () => {
-    fill(205, 220, 57);
-    for (let i = 0; i < this.total; i++) {
-      rect(this.tail[i].x, this.tail[i].y, 15, 15);
-    }
-    rect(this.x, this.y, 15, 15);
-  }
-
-}
-
-let cnv;
-let snake;
-let scl = 15;
-let isGameOn = false;
-
-
-//////////////////////////////////////////
-//SETUP
-//////////////////////////////////////////
+let Game;
+let BlockSize;
+let startGame = false;
 
 function setup() {
-  cnv = createCanvas(500, 423);
-  cnv.parent('my-container');
-
-  snake = new Snake();
-  snake.collisionHandler = () => {
-    isGameOn = false;
-    document.getElementById('startGame').style.display = 'block';
-    snake.x = 0;
-    snake.y = 0;
-  }
+  let cnv = createCanvas(640, 480);
+  Game = new game();
   frameRate(10);
-  foodLocation();
+  cnv.parent("snake");
 
-  // Event listeners
-  let btn = document.getElementById("startGame").addEventListener("click", startGame);
+  let snakeBtn = document.getElementById('snake-btn').addEventListener('click', startSnake);
 }
 
-  function startGame() {
-    isGameOn = true;
-    document.getElementById('startGame').style.display = 'none';
-  }
-
-function foodLocation() {
-  let cols = floor(width/scl);
-  let rows = floor(height/scl);
-  food = createVector(floor(random(cols)), floor(random(rows)));
-  food.mult(scl);
+function startSnake() {
+  startGame = true;
+  document.getElementById('snake-btn').style.display = 'none';
 }
 
-//////////////////////////////////////////
-//DRAW
-//////////////////////////////////////////
-
-
-// setTimeout(function(){
-//   keepDrawing = true;
-// }, 2000)
 function draw() {
 
-  if ( !isGameOn ) {
-    return;
+  if (!startGame) {
+    return false;
   }
 
-  background(102, 187, 106);
-  if (snake.eat(food)) {
-    foodLocation();
+  background(50, 175, 50);
+  Game.update();
+  Game.display();
+
+
+}
+
+function game() {
+  BlockSize = 20;
+  this.Snake = new snake();
+  this.Fruit = new fruit(this.Snake);
+  this.GameOver = false;
+  this.RButton = new ResetButton();
+  this.Frame = frameCount;
+
+  this.update = function() {
+    if (this.Snake.eat(this.Fruit)) {
+      this.Snake.grow();
+      this.Fruit.resetPosition(this.Snake);
+    } else
+    this.Snake.move();
+    this.GameOver = this.Snake.checkCollision();
+
   }
 
-  snake.collision();
-  snake.update();
-  snake.show();
+  this.display = function() {
+    this.Fruit.display();
+    this.Snake.display();
+    if (this.GameOver) {
+      background(155, 155, 155, 200);
+      fill(200, 155, 0);
+      noStroke();
+      textSize(32);
+      textAlign(CENTER, CENTER);
+      text("Your snaked reached a length of " + (this.Snake.tail.length + 1) + " !", 0, 0, width, height);
+      noLoop();
+      this.RButton.display();
 
-  fill(205, 220, 57);
-  rect(food.x, food.y, 15, 15);
+    }
+
+  }
+  this.keyPressed = function() {
+    if (this.Frame != frameCount) {        //Prevents two keys in same frame
+      this.Frame=frameCount;
+       return(this.Snake.keyPressed());
+
+    }
+
+  }
+  this.onClick = function() {
+    if (this.GameOver) this.RButton.onClick();
+	//else this.Snake.touch();
+  }
+  this.touch=function(){
+	  if (this.Frame != frameCount) {        //Prevents two keys in same frame
+      this.Snake.touch();
+      this.Frame=frameCount;
+    }
+    if (this.GameOver) this.RButton.onClick();
+  }
+  this.reset = function() {
+    //background("black");
+    stroke(0);
+    strokeWeight(1);
+    this.GameOver = false;
+    this.Snake = new snake();
+    loop();
+  }
+
+
+
+}
+
+function snake() {
+  this.pos = createVector(0, 0);
+  this.velocity = createVector(BlockSize, 0);
+  this.tail = [];
+
+
+  this.move = function() {
+    //movement of snake
+    if (this.tail.length > 0) {
+      this.tail.pop();
+      this.tail.unshift(this.pos.copy());
+    }
+    this.pos.add(this.velocity);
+    // movement in case of touching boundary
+    if (this.pos.x >= width) this.pos.x = 0;
+    else if (this.pos.x < 0) this.pos.x = width - BlockSize; if (this.pos.y >= height) this.pos.y = 0;
+    else if (this.pos.y < 0) this.pos.y = height - BlockSize;
+    //--movement ends of snake
+
+
+  }
+  this.checkCollision = function() {
+    for (var i = 0; i < this.tail.length; i++) {
+      if (this.tail[i].equals(this.pos)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  this.display = function() {
+    fill(100, 200, 100);
+    rect(this.pos.x, this.pos.y, BlockSize, BlockSize); //displays head
+    for (var i = 0; i < this.tail.length; i++) { //displays tail
+	rect(this.tail[i].x, this.tail[i].y, BlockSize, BlockSize);
+	}
+	}
+	this.keyPressed = function() {
+	if (keyCode == UP_ARROW && this.velocity.y == 0) {
+		this.velocity.set(0, -BlockSize); return false;
+		}
+		else if (keyCode == DOWN_ARROW && this.velocity.y == 0) {
+			this.velocity.set(0, BlockSize); return false;
+			}
+		else if (keyCode == LEFT_ARROW && this.velocity.x == 0) {
+			this.velocity.set(-BlockSize, 0); return false;
+		}
+		else if (keyCode == RIGHT_ARROW && this.velocity.x == 0) {
+			this.velocity.set(BlockSize, 0); return false; }
+		else return true;
+	}
+    this.touch=function(){
+           if(mouseX>0 && mouseX<width && mouseY>0 && mouseY<height){ if (mouseX>width/2){
+			  if(this.velocity.y==0){
+				  this.velocity.set(0,-this.velocity.x);
+			  }
+			  else{
+				  this.velocity.set(this.velocity.y,0);
+			  }
+		  }
+		  else{
+			  if(this.velocity.x==0){
+				  this.velocity.set(-this.velocity.y,0);
+			  }
+			  else{
+				  this.velocity.set(0,this.velocity.x);
+			  }
+
+		  }
+	  }
+  }
+  this.eat = function(food) {
+    if (this.pos.dist(food.pos) == 0)
+      return true;
+    else
+      return false;
+  }
+  this.grow = function() {
+    this.tail.unshift(this.pos.copy());
+    this.pos.add(this.velocity);
+  }
+
+}
+
+function fruit(Snake) {
+  this.pos = createVector(0, 0);
+
+  this.resetPosition = function(Snake) {
+    this.pos.x = floor(random(0, width / BlockSize)) * BlockSize;
+    this.pos.y = floor(random(0, height / BlockSize)) * BlockSize;
+	if(Snake.tail.length>0){
+		for (var i = 0; i < Snake.tail.length; i++) {
+			if (Snake.tail[i].equals(this.pos)) {
+				this.resetPosition(Snake);
+			}
+		}
+	}
+
+  }
+  this.resetPosition(Snake);
+  this.display = function() {
+    fill(50, 200, 50);
+    rect(this.pos.x, this.pos.y, BlockSize, BlockSize);
+  }
+}
+
+function ResetButton() {
+  this.x = width / 2;
+  this.y = height * 3 / 4;
+  this.radius = 30;
+  this.col = 255;
+  this.display = function() {
+    noFill();
+    stroke(this.col);
+    strokeWeight(4);
+    arc(this.x, this.y, 60, 60, 0, 10 / 6 * PI);
+    // line(this.x + this.radius, this.y, this.x + this.radius + 5, this.y + 5);
+    // line(this.x + this.radius, this.y, this.x + this.radius - 5, this.y + 5);
+
+  }
+  this.onClick = function() {
+    if (dist(mouseX, mouseY, this.x, this.y) < this.radius) {
+      Game.reset();
+    }
+
+  }
+
+}
+
+function mouseReleased() {
+  Game.onClick();
+  return false;
+}
+function mousePressed() {
+}
+
+function touchStarted(){
+	Game.touch();
+}
+function touchEnded(){
+	return false;
 }
 
 function keyPressed() {
-  if (keyCode === UP_ARROW) {
-    snake.dir(0, -1);
-  }
-  else if (keyCode === DOWN_ARROW) {
-    snake.dir(0, 1);
-  }
-  else if (keyCode === RIGHT_ARROW) {
-    snake.dir(1, 0);
-  }
-  else if (keyCode === LEFT_ARROW) {
-    snake.dir(-1, 0);
-  }
+  return(Game.keyPressed());       // to prevent default of arrow keys only
 }
