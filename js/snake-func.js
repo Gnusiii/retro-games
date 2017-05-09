@@ -1,10 +1,10 @@
-
+let cnv;
 let Game;
 let BlockSize;
 let startGame = false;
 
 function setup() {
-  let cnv = createCanvas(640, 480);
+  cnv = createCanvas(500, 423);
   Game = new game();
   frameRate(10);
   cnv.parent("snake");
