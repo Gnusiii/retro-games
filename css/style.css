@@ -11,14 +11,7 @@ html, body {
 	margin: 0;
 }
 
-#my-container {
-	z-index: 1;
-}
-
-#snakeBtn-snuba {
-	z-index: 1;
-}
-
+/* navbar*/
 .logo{
 	position: fixed;
 	left: 80px;
@@ -43,10 +36,20 @@ height: 50px;
 	margin-top: 50px;
 	z-index: 9;
 }
-
 li{
 	display: inline;
 }
+ul li a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 24px;
+	padding: 25px;
+}
+ul li a:hover{
+	text-decoration: underline;
+	color: #fff;
+}
+/* sections*/
 .home{
 	background-color: rgba(0, 0, 0, 0.5);
 }
@@ -62,47 +65,31 @@ li{
 .panel{
 	display: flex;
 	align-items: center;
-	justify-content: middle;
+	justify-content: center;
 	width:100vw;
-	height:100vh;
-	
+	height:100vh;	
 }
-
-ul li a{
-	text-decoration: none;
-	color: #fff;
-	font-size: 24px;
-	padding: 25px;
-}
-ul li a:hover{
-	text-decoration: underline;
-	color: #fff;
-}
+/* þil*/
 .partition{
 	width: 100vw;
 	height: 100vw;
 	z-index: 10;
 }
-
 .purple{
 	background-color: #2F484E;
-	height: 50%;
-	
+	height: 50%;	
 }
 .grey{
 	background-color: #9D9D9D;;
 	height: 50%;
 }
+/*leikir*/
 .playbox{
 	position: relative;
 	border: 6px solid #fff;
 	width: 512px;
 	height: 435px;
 	color: #fff;
-}
- .panel #my-container{
-	align-self: center;
-	justify-content: middle;
 }
 .playbox .playbutton-name{
 	margin: 0;
@@ -121,7 +108,6 @@ ul li a:hover{
 	text-align: center;
 	animation: playme 3s ease-in-out infinite;
 }
-
 @keyframes playme{
 	0%{
 		opacity: 1;
@@ -133,23 +119,23 @@ ul li a:hover{
 		opacity: 1;
 	}
 }
-.playbutton:hover{
+.playbutton :hover{
 	opacity: 1;
 	cursor: hand;
-	
 }
 .game-name{
 	font-family: 'Press Start 2P', cursive;
 	font-size: 28px;
 	text-align: center;
 }
+
+/*scroll down*/
 .scroll-downs {
   position: absolute;
   right: 0;
   bottom: 15px;
   left: 0;
   margin: auto;
-  
   width :34px;
   height: 55px;
 }
@@ -189,28 +175,18 @@ body > canvas{
 /*game canvas*/
 section canvas {
 } 
+
+/*footer*/
 footer{
 	height: 100vh;
+	width: 100vw;
 	position: relative;
 	background-color: #1B2632;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
-.footermix{
-	margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.boxframe{
-	border: 2px solid #fff;
-	height: 200px;
-	position: relative;
-	height:370px; 
-	width:785px;
-	/*background: rgba(255,255,255,0.60);*/
-	border: 6px solid #fff;
 
-}
 .mitt-a-milli{
 	padding: 40px;
 
