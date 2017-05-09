@@ -1,20 +1,33 @@
 
 let Game;
 let BlockSize;
+let startGame = false;
 
 function setup() {
 	let cnv = createCanvas(500, 500);
 	cnv.parent("tetris");
 	Game = new game();
-	frameRate(4);
-	textAlign(CENTER,CENTER);
+	frameRate(10);
+	textAlign(RIGHT);
 	textSize(14);
+
+	let tetrisBtn = document.getElementById('tetris-btn').addEventListener('click', startTetris);
+}
+
+function startTetris() {
+	startGame = true;
+	document.getElementById('tetris-btn').style.display = 'none';
 }
 
 function draw() {
 
+	if ( !startGame ) {
+		return;
+	}
+
 	Game.update();
 	Game.display();
+
 }
 
 function game() {
@@ -23,9 +36,9 @@ function game() {
 	this.GameLevel=1;
 	this.Matrix=new matrix();
 	this.stats=new statistics();
-	this.designs= [ "I", "J", "L", "O", "S", "T", "Z" ];
-	this.Curr_Piece=new piece(random(this.designs));
-	this.Next_Piece=new piece(random(this.designs));
+	this.blocks= [ "I", "J", "L", "O", "S", "T", "Z" ];
+	this.Curr_Piece=new piece(random(this.blocks));
+	this.Next_Piece=new piece(random(this.blocks));
 	this.GameOver=false;
 	this.rButton=new ResetButton();
 
@@ -51,7 +64,7 @@ function game() {
 
 		if(this.Matrix.free){
 			this.Matrix.falling_piece=this.Next_Piece;
-			this.Next_Piece=new piece(random(this.designs));
+			this.Next_Piece=new piece(random(this.blocks));
 			this.stats.piece=this.Next_Piece;
 			this.stats.update();
 		}
@@ -107,7 +120,7 @@ function matrix(){
 
 		var collision=this.checkCollission();
 		if (collision) {
-			//Add the design to Matrix
+			//Add the blocks to Matrix
 			this.free=true;
 			for(var i=0;i<this.falling_piece.blocks.length;i++){
 				block=p5.Vector.add(this.falling_piece.pos,this.falling_piece.blocks[i]);
@@ -249,35 +262,34 @@ function matrix(){
 }
 
 function statistics(){
-	this.design_position=createVector((width-260)/BlockSize+4,height/(2*BlockSize));
+	this.block_position=createVector((width-260)/BlockSize+4,height/(2*BlockSize));
 	this.score_position=createVector(width-260,100);
 	this.next_text=createVector((width-260),height/2+30);
 
 	this.update=function(){
-		this.piece.pos.set(this.design_position);
+		this.piece.pos.set(this.block_position);
 	}
 	this.display=function(){
 
 		this.piece.display();
 		//text("hi"+this.score,width-300,0,width,height);
-		fill("white");
+		fill(0);
 		// text("Next piece ", this.next_text.x, this.next_text.y);
-		text("Score: "+Game.Score,240,0,width-240,height/4);
-		text("Level: "+Game.GameLevel,240,0,width-240,height/2);
-
+		let scoreCount = text("Score: "+Game.Score,240,0,width-240,height/4);
+		let levelCount = text("Level: "+Game.GameLevel,240,0,width-240,height/2);
 
 	}
 }
 
-function piece(design){
+function piece(block){
 	this.pos=createVector(0,0);
 	this.blocks=[]
-	this.color="#FF0000";
+	this.color= color(0,0,0);
 	this.rot=0;          // four rorations 0,1 and 2 and 3
 	this.fillblocks=function(){
 		this.blocks=[];
-		if(design=="I"){
-			this.color="#FF0000";
+		if(block == "I"){
+			this.color= color(25, 150, 25);
 			if (this.rot==0||this.rot==2){
 				this.blocks.push(createVector(0,0));
 				this.blocks.push(createVector(0,1));
@@ -292,8 +304,8 @@ function piece(design){
 			}
 
 		}
-		if(design=="L"){
-			this.color="#FFFF00";
+		if(block=="L"){
+			this.color= color(100,100,100);
 			if(this.rot==0){
 				this.blocks.push(createVector(0,0));
 				this.blocks.push(createVector(0,1));
@@ -319,8 +331,8 @@ function piece(design){
 				this.blocks.push(createVector(2,1));
 			}
 		}
-		if(design=="J"){
-			this.color="#FF00FF";
+		if(block == "J"){
+			this.color= color(0, 200, 200);
 			if(this.rot==0){
 				this.blocks.push(createVector(1,0));
 				this.blocks.push(createVector(1,1));
@@ -346,16 +358,16 @@ function piece(design){
 				this.blocks.push(createVector(2,1));
 			}
 		}
-		if(design=="O"){
-			this.color="#00FFFF";
+		if(block == "O"){
+			this.color= color(200, 200, 0);
 			this.blocks.push(createVector(0,0));
 			this.blocks.push(createVector(0,1));
 			this.blocks.push(createVector(1,0));
 			this.blocks.push(createVector(1,1));
 
 		}
-		if(design=="S"){
-			this.color="#0000FF";
+		if(block == "S"){
+			this.color= color(200, 0, 200);
 			if(this.rot==0 ||this.rot==2){
 				this.blocks.push(createVector(1,0));
 				this.blocks.push(createVector(2,0));
@@ -369,8 +381,8 @@ function piece(design){
 				this.blocks.push(createVector(1,2));
 			}
 		}
-		if(design=="T"){
-			this.color="#C0C0C0";
+		if(block == "T"){
+			this.color= color(150, 50, 150);
 			if (this.rot==0){
 				this.blocks.push(createVector(0,0));
 				this.blocks.push(createVector(1,0));
@@ -396,8 +408,8 @@ function piece(design){
 				this.blocks.push(createVector(0,2));
 			}
 		}
-		if(design=="Z"){
-			this.color="#80FF00";
+		if(block == "Z"){
+			this.color= color(50, 150, 200);
 			if(this.rot==0|| this.rot==2){
 				this.blocks.push(createVector(0,0));
 				this.blocks.push(createVector(1,0));
@@ -416,7 +428,7 @@ function piece(design){
 
 
 	this.display=function(){
-		stroke("black");
+		stroke(1, 1, 1);
 		fill(this.color);
 		for (var i=0;i<this.blocks.length;i++){
 			position=p5.Vector.add(this.pos,this.blocks[i]);
@@ -425,6 +437,7 @@ function piece(design){
 
 	}
 }
+
 
 function ResetButton() {
 	//this.score_position=createVector(width-260,300);
