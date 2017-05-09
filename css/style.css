@@ -22,7 +22,7 @@ html, body {
 }*/
 
 
-#canvas-snuba {
+#my-container {
 	z-index: 1;
 
 
@@ -79,20 +79,20 @@ li{
 	background-color: rgba(0, 87, 132, 0.5);
 }
 
-.home .about {
+/*.home .about {
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: scroll;
-}
+}*/
 
 .home .about h1{
 	height: 500px;
 	width: 500px;
 }
-.snake .playbox {
+/*.snake .playbox {
     margin: 0;
     position: absolute;
     top: 50%;
@@ -112,6 +112,11 @@ li{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}*/
+.panel{
+	display: flex;
+	align-items: center;
+	justify-content: middle;
 }
 
 ul li a{
@@ -140,7 +145,7 @@ ul li a:hover{
 	z-index: 10;
 }
 .playbox{
-	position: relative;
+	
 	
 	/*background: rgba(255,255,255,0.60);*/
 	border: 6px solid #fff;
@@ -230,7 +235,7 @@ canvas{
 footer{
 	height: 100vh;
 	position: relative;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: #1B2632;
 }
 .footermix{
 	margin: 0;
@@ -271,18 +276,23 @@ footer{
   	filter: grayscale(1);
 }
 .pic-disa{
-	background-image: url(../assets/disa02.png);
- 
+	background-image: url(../assets/disa.png);
+ 	top: 0px;
+ 	left: 0px
 }
 .pic-disa:hover{
-	background-image: url(../assets/disa01.png);
+	left: 0px;
+	bottom: 2450px;
 	
 }
 .pic-gnusi{
-	background-image: url(../assets/gnusi01.png);
+	background-image: url(../assets/gnusi.png);
+	top: 0px;
+ 	left: 0px
 }
 .pic-gnusi:hover{
-	background-image: url(../assets/gnusi02.png);
+	left:0px;
+	top: 2450px;
 	
 }
 
