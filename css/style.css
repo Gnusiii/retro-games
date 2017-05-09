@@ -10,23 +10,9 @@ html, body {
 *{
 	margin: 0;
 }
-/*.topnav{
-	width: 100vw;
-	height: 50px;
-	margin-top: 50px;
-	position: fixed;
-	z-index: 9;
-	left: 50%;
-	transform: translate(-50%, -50%);
 
-}*/
-
-
-#canvas-snuba {
+#my-container {
 	z-index: 1;
-
-
-
 }
 
 #snakeBtn-snuba {
@@ -61,11 +47,6 @@ height: 50px;
 li{
 	display: inline;
 }
-.home, .snake, .break-out, .space-invaders{
-	width:100vw;
-	height:100vh;
-	position: relative;
-}
 .home{
 	background-color: rgba(0, 0, 0, 0.5);
 }
@@ -78,40 +59,13 @@ li{
 .space-invaders{
 	background-color: rgba(0, 87, 132, 0.5);
 }
-
-.home .about {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: scroll;
-}
-
-.home .about h1{
-	height: 500px;
-	width: 500px;
-}
-.snake .playbox {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.break-out .playbox {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.space-invaders .playbox {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.panel{
+	display: flex;
+	align-items: center;
+	justify-content: middle;
+	width:100vw;
+	height:100vh;
+	
 }
 
 ul li a{
@@ -127,27 +81,29 @@ ul li a:hover{
 .partition{
 	width: 100vw;
 	height: 100vw;
+	z-index: 10;
 }
 
 .purple{
 	background-color: #2F484E;
 	height: 50%;
-	z-index: 10;
+	
 }
 .grey{
 	background-color: #9D9D9D;;
 	height: 50%;
-	z-index: 10;
 }
 .playbox{
 	position: relative;
-	
-	/*background: rgba(255,255,255,0.60);*/
 	border: 6px solid #fff;
 	width: 512px;
 	height: 435px;
+	color: #fff;
 }
-
+ .panel #my-container{
+	align-self: center;
+	justify-content: middle;
+}
 .playbox .playbutton-name{
 	margin: 0;
     position: absolute;
@@ -179,6 +135,8 @@ ul li a:hover{
 }
 .playbutton:hover{
 	opacity: 1;
+	cursor: hand;
+	
 }
 .game-name{
 	font-family: 'Press Start 2P', cursive;
@@ -220,17 +178,22 @@ ul li a:hover{
   10% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(15px); opacity: 0;}
 }
-canvas{
+
+/*background canvas*/
+body > canvas{
 	position: fixed;
 	top:0px;
 	z-index: -1;
 	background-color: #1B2632;
 }
+/*game canvas*/
+section canvas {
 
+} 
 footer{
 	height: 100vh;
 	position: relative;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: #1B2632;
 }
 .footermix{
 	margin: 0;
@@ -251,8 +214,7 @@ footer{
 }
 .mitt-a-milli{
 	padding: 40px;
-}
-.mitt-a-milli{
+
 	text-align: center;
 }
 
@@ -271,18 +233,19 @@ footer{
   	filter: grayscale(1);
 }
 .pic-disa{
-	background-image: url(../assets/disa02.png);
- 
+	background-image: url(../assets/disa.png);
+ 	background-position: 0px -20px;
 }
 .pic-disa:hover{
-	background-image: url(../assets/disa01.png);
+	background-position: 0px 2450px;
 	
 }
 .pic-gnusi{
-	background-image: url(../assets/gnusi01.png);
+	background-image: url(../assets/gnusi.png);
+	background-position: 0px -20px;
 }
 .pic-gnusi:hover{
-	background-image: url(../assets/gnusi02.png);
+	background-position: 0px 2450px;
 	
 }
 
