@@ -188,7 +188,6 @@ body > canvas{
 }
 /*game canvas*/
 section canvas {
- z-index: 100;
 } 
 footer{
 	height: 100vh;
