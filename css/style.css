@@ -35,6 +35,10 @@ height: 50px;
 	height: 50px;
 	margin-top: 50px;
 	z-index: 9;
+	opacity: 1;
+}
+.info:hover{
+	opacity: 0.8;
 }
 li{
 	display: inline;
@@ -118,7 +122,7 @@ ul li a:hover{
 .playbutton{
 	font-size: 144px;
 	text-align: center;
-	animation: playme 2s ease-in-out infinite;
+	animation: playme 1.5s ease-in-out infinite;
 }
 @keyframes playme{
 	0%{
