@@ -47,15 +47,16 @@ a{
 a:hover{
 	color: #fff;
 }
-a:active{
+a:focus{
 	color: #fff;
 }
 ul li a{
 	text-decoration: none;
 	color: #fff;
 	font-size: 24px;
-	padding: 25px;
+	padding: 60px;
 }
+
 ul li a:hover{
 	text-decoration: underline;
 	color: #fff;
@@ -63,6 +64,9 @@ ul li a:hover{
 /* sections*/
 .home{
 	background-color: rgba(0, 0, 0, 0.5);
+}
+.home h2{
+	text-align: right;
 }
 .snake{
 	background-color: rgba(68, 137, 26, 0.5);
@@ -75,6 +79,7 @@ ul li a:hover{
 }
 .panel{
 	display: flex;
+	position: relative;
 	align-items: center;
 	justify-content: center;
 	width:100vw;
@@ -110,14 +115,10 @@ ul li a:hover{
     transform: translate(-50%, -50%);
     color: #fff;
 }
-.plabutton-name:hover{
-	cursor: hand;
-	cursor: pointer;
-}
 .playbutton{
 	font-size: 144px;
 	text-align: center;
-	animation: playme 3s ease-in-out infinite;
+	animation: playme 2s ease-in-out infinite;
 }
 @keyframes playme{
 	0%{
@@ -134,6 +135,10 @@ ul li a:hover{
 	opacity: 1;
 	cursor: hand;
 }
+.playbutton-name:hover{
+	cursor: hand;
+	cursor: pointer;
+}
 .game-name{
 	font-family: 'Press Start 2P', cursive;
 	font-size: 28px;
@@ -149,6 +154,7 @@ ul li a:hover{
   margin: auto;
   width :34px;
   height: 55px;
+  z-index: 999999999999;
 }
 .mousey {
   width: 3px;
@@ -239,5 +245,8 @@ footer{
 
 	.game-name{
 	font-size: 24px;
+	}
+	ul li a{
+	padding: 25px;
 }
 }
