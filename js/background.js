@@ -46,7 +46,7 @@ const scene = new THREE.Scene();
 
           kvikmynd.translateZ( - 0.005 );
 
-				renderer.render( , kvikmynd);
+				renderer.render( scene, kvikmynd);
 			};
 
 			render();

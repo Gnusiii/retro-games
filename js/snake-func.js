@@ -18,7 +18,7 @@ function setup() {
   textAlign(CENTER,CENTER);
 	textSize(14);
   canvas.parent("tetris");
-  // cnv.parent("snake");
+  //cnv.parent("snake");
 
   let tetrisBtn = document.getElementById('tetris-btn').addEventListener('click', startTetris);
   let snakeBtn = document.getElementById('snake-btn').addEventListener('click', startSnake);

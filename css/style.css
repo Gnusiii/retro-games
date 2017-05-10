@@ -194,7 +194,10 @@ body > canvas{
 	background-color: #1B2632;
 }
 /*game canvas*/
-section canvas {
+.snake  canvas {
+} 
+.break-out  canvas {
+	
 } 
 
 /*footer*/
