@@ -10,15 +10,15 @@ let startGame = false;
 // const mySnake = new Snake();
 
 function setup() {
-  cnv = createCanvas(640, 480);
-  canvas = createCanvas(500, 500);
+  cnv = createCanvas(500, 490);
+  canvas = createCanvas(500, 490);
   Game = new game();
   tetris = new TetrisGame();
   frameRate(10);
   textAlign(CENTER,CENTER);
 	textSize(14);
   canvas.parent("tetris");
-  //cnv.parent("snake");
+  cnv.parent("snake");
 
   let tetrisBtn = document.getElementById('tetris-btn').addEventListener('click', startTetris);
   let snakeBtn = document.getElementById('snake-btn').addEventListener('click', startSnake);

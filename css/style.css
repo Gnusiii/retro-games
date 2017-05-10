@@ -108,7 +108,7 @@ ul li a:hover{
 	position: relative;
 	border: 6px solid #fff;
 	width: 512px;
-	height: 435px;
+	height: 502px;
 	color: #fff;
 }
 .playbox .playbutton-name{
@@ -158,7 +158,6 @@ ul li a:hover{
   margin: auto;
   width :34px;
   height: 55px;
-  z-index: 999999999999;
 }
 .mousey {
   width: 3px;
@@ -197,7 +196,7 @@ body > canvas{
 .snake  canvas {
 } 
 .break-out  canvas {
-	
+
 } 
 
 /*footer*/
